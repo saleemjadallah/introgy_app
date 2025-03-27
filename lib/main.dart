@@ -27,10 +27,10 @@ void main() async {
   // Initialize Firebase
   await Firebase.initializeApp();
   
-  // Initialize Supabase
+  // Initialize Supabase with credentials from .env file
   await Supabase.initialize(
-    url: 'https://gnvlzzqtmxrfvkdydxet.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdudmx6enF0bXhyZnZrZHlkeGV0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY3OTc0MzYsImV4cCI6MjAzMjM3MzQzNn0.HQ5HBgHzL0T1PBOESlZr0KvY3R8A9fhBJsH3KNB2bH8',
+    url: dotenv.env['SUPABASE_URL'] ?? '',
+    anonKey: dotenv.env['SUPABASE_ANON_KEY'] ?? '',
     debug: true,  // Set to false in production
     authFlowType: AuthFlowType.pkce, // For secure authentication flow
   );
